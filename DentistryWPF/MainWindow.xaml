@@ -1,0 +1,57 @@
+﻿<Window x:Class="DentistryWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="АРМ-Методист" Icon="Resources\Image\icon.png" Height="204.8" Width="474.4" AutomationProperties.Name="Form1" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
+    <Window.Resources>
+    </Window.Resources>
+    <Grid x:Name="GridMain" Height="177" Background="#FFE0E0E0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="62*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border MinWidth="400" VerticalAlignment="Center" Margin="15" Background="White" Padding="40" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="62*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="buttonCalendar" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                            Margin="0,0,0,0" Height="55" Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Click="buttonCalendar_Click" Grid.Column="0">
+                        <StackPanel Orientation="Vertical" Width="66">
+                            <Image Height="32" HorizontalAlignment="Right" Source="Resources\Image\ImageForButton\calender-schedule.png" Margin="0,0,16.6,0" Width="39" />
+                            <TextBlock Text="Расписание" Margin="0,0,0,100" FontSize="12" FontStyle="Normal" Foreground="#DD000000" Height="22" HorizontalAlignment="Left" Width="66" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="buttonStaff" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                            Height="55" Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Click="buttonStaff_Click" Grid.Column="1">
+                        <StackPanel Orientation="Vertical" Width="66">
+                            <Image Height="32" HorizontalAlignment="Right" Source="Resources\Image\ImageForButton\staff.png" Margin="0,0,16.6,0" Width="39" />
+                            <TextBlock Text="Сотрудники" Margin="0,0,0,100" FontSize="12" FontStyle="Normal" Foreground="#DD000000" Height="22" HorizontalAlignment="Left" Width="66" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="buttonStudents" VerticalAlignment="Bottom" 
+                            Margin="0,0,21.2,0.2" Height="55" Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Click="buttonStudents_Click" Grid.Column="2">
+                        <StackPanel Orientation="Vertical" Width="66">
+                            <Image Height="32" HorizontalAlignment="Right" Source="Resources\Image\ImageForButton\students.png" Margin="0,0,16.6,0" Width="39" />
+                            <TextBlock Text="Студенты" Margin="7,0,-7.4,0" FontSize="12" FontStyle="Normal" Foreground="#DD000000" Height="22" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

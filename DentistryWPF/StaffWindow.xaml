@@ -1,0 +1,88 @@
+﻿<Window x:Class="DentistryWPF.StaffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DentistryWPF"
+        mc:Ignorable="d"
+        Title="Список сотрудников" Icon="Resources\Image\icon.png" Height="296.933" Width="687.833" WindowStartupLocation="CenterScreen" 
+        Loaded="Window_Loaded" ResizeMode="CanResize" ScrollViewer.HorizontalScrollBarVisibility="Auto" Activated="Window_Activated">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="0,0,0,0" Grid.Row="0">
+            <TextBox x:Name="TB_Search" TextChanged="TextBox_TextChanged" Margin="0,-0,0,0">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Строка поиска по ФИО" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="staffsGrid" IsReadOnly="True" CanUserReorderColumns="False" MouseDoubleClick="staffsGrid_MouseDoubleClick" Margin="0,0,0,0" Grid.Row="1">
+            <DataGrid.ContextMenu>
+                <ContextMenu x:Name="CM_Data_Grid_Staffs" StaysOpen="true">
+                    <MenuItem x:Name="MI_List_Delete_Staff" Header="Удалить запись о сотруднике" Click="MI_List_Delete_Staff_Click"/>
+                    <!--<MenuItem x:Name="MI_List_TreatPat" Header="Список лечений пациента" Click="MI_List_TreatPat_Click"/>-->
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID_Staff}" Header="ID" Width="240" FontSize="12" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding FLP}" Header="ФИО" Width="400*" FontSize="12">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Post}" Header="Должность" Width="300*" FontSize="12">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding N_Cabinet}" Header="№ кабинета" Width="110" FontSize="12"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1075">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Column="1" Margin="84.1,0,114,0">
+                <!--<Button x:Name="updateButton" Content="Обновить" Background="#FF32ACD8" BorderBrush="{x:Null}" Click="updateButton_Click"/>-->
+                <Button x:Name="addButton" Content="Добавить" Foreground="AliceBlue" BorderBrush="{x:Null}" Click="addButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="Red" Offset="1"/>
+                            <GradientStop Color="#FF00359F" Offset="0.495"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <!--<Button x:Name="editButton" Content="Изменить" Click="editButton_Click"/>-->
+                <!--<Button x:Name="deleteButton" Content="Удалить" Background="#FF32ACD8" BorderBrush="{x:Null}" Click="deleteButton_Click"/>-->
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

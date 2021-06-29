@@ -1,0 +1,97 @@
+﻿<Window x:Class="DentistryWPF.StudentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DentistryWPF"
+        mc:Ignorable="d"
+        Title="Студенты" Icon="Resources\Image\icon.png" Height="680" Width="510" AutomationProperties.Name="Form2" MinWidth="100" MinHeight="670" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize" MaxWidth="1000" MaxHeight="680" ScrollViewer.HorizontalScrollBarVisibility="Auto" Activated="Window_Activated">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style x:Key="DGridCentAl" TargetType="DataGridColumnHeader">
+            <Setter Property="Thumb.HorizontalContentAlignment" Value="Center" />
+        </Style>
+        <XmlDataProvider x:Key="customerdata" Source="customers.xml" XPath="Data" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <Grid Height="25">
+                <TextBox x:Name="TB_Search" TextChanged="TextBox_TextChanged">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Строка поиска" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <!--<ComboBox x:Name="ComboBox_Search" materialDesign:HintAssist.Hint="Строка поиска" ItemsSource="{Binding}"/>-->
+            </Grid>
+            <Grid>
+                <!--ColumnHeaderStyle="{StaticResource DGridCentAl}"-->
+                <DataGrid AutoGenerateColumns="False" x:Name="patientsGrid" IsReadOnly="True" CanUserReorderColumns="False" MouseDoubleClick="patientsGrid_MouseDoubleClick" Margin="0,0,0,-520" >
+                    <DataGrid.ContextMenu>
+                        <ContextMenu x:Name="CM_Data_Grid_Patients" StaysOpen="true">
+                            <MenuItem x:Name="MI_List_AddEd_Record" Header="Карта пациента" Click="MI_List_AddEd_Record_Click"/>
+                            <MenuItem x:Name="MI_List_Delete_Patient" Header="Удалить запись" Click="MI_List_Delete_Patient_Click"/>
+                            <!--<MenuItem x:Name="MI_List_TreatPat" Header="Список лечений пациента" Click="MI_List_TreatPat_Click"/>-->
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ID_Patient}" Header="ID" Width="240" FontSize="12" Visibility="Collapsed"/>
+                        <DataGridTextColumn Binding="{Binding FLP}" Header="ФИО" Width="240" FontSize="12"/>
+                        <DataGridTextColumn Binding="{Binding Phones}" Header="Телефон" Width="124" FontSize="12"/>
+                        <DataGridTextColumn Binding="{Binding Date_of_birth}" Header="Дата рождения" Width="130" FontSize="12"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Margin="0,571,0,-571">
+                    <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" Margin="72,0,72,0">
+                        <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" Foreground="AliceBlue" Visibility="Hidden">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0"/>
+                                    <GradientStop Color="Red" Offset="1"/>
+                                    <GradientStop Color="#FF00359F" Offset="0.495"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="addButton" Content="Добавить" Click="addButton_Click"  Foreground="AliceBlue">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0"/>
+                                    <GradientStop Color="Red" Offset="1"/>
+                                    <GradientStop Color="#FF00359F" Offset="0.495"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <!--<Button x:Name="editButton" Content="Изменить" Click="editButton_Click"/>-->
+                        <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" Background="#FF32ACD8" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!--<Grid Height="500">
+
+        </Grid>-->
+        </StackPanel>
+    </Grid>
+</Window>
