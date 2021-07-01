@@ -1,11 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
-using System.Windows.Media;
-//using System.Drawing;
+﻿using System.Windows;
 
 namespace DentistryWPF
 {

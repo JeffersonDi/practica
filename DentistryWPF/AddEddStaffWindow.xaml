@@ -29,7 +29,7 @@
                             <ComboBox x:Name="ComboBox_Sex" materialDesign:HintAssist.Hint="Пол" ItemsSource="{Binding}" Margin="144,49,190,86" Width="43" Height="25" Grid.Column="1"/>
                             <DatePicker x:Name="DP_Date_births" materialDesign:HintAssist.Hint="Дата рождения" Margin="192,49,75,86" Height="25" Grid.Column="1"/>
                             <TextBox x:Name="TB_Post" materialDesign:HintAssist.Hint="Должность" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,75,211,21" Grid.ColumnSpan="2" AcceptsReturn="True" TextWrapping="Wrap"/>
-                            <TextBox x:Name="TB_Specialty" materialDesign:HintAssist.Hint="Специальность" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="173,75,1,21" Grid.Column="1"/>
+                            <TextBox x:Name="TB_Specialty" materialDesign:HintAssist.Hint="Специальность" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="173,75,1,21" Grid.Column="1" TextWrapping="Wrap"/>
                             <TextBox x:Name="TB_N_Cabinet" materialDesign:HintAssist.Hint="№ кабинета" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="307,37,-1,0" VerticalAlignment="Top" Width="71" Height="37" Grid.Column="1"/>
                             <TextBlock Text="Паспортные данные" Margin="0,143,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Width="141"/>
                         </Grid>

@@ -130,7 +130,7 @@ namespace DentistryWPF
             }
         }
 
-        private void SQLDoctorUpdate()
+        private void SQLStaffUpdate()
         {
             string sql =
                     "UPDATE Staffs " +
@@ -482,7 +482,7 @@ namespace DentistryWPF
             }
             else
             {
-                SQLDoctorUpdate();
+                SQLStaffUpdate();
                 SQLContactDetailsDUpdate();
                 SQLPassportDataDUpdate();
             }
